@@ -1,0 +1,127 @@
+html, body {
+	width: 100%; 
+	margin: 0 auto 0 auto;
+	padding: 0;
+	height: 100%;
+/* 	position: fixed; */
+}
+
+.wrapper {
+	width: 778px;
+	margin: 0 auto 0 auto;
+	height:100%;
+	position:static;
+}
+
+.img_colmena {
+/* 	border: 0px; */
+/* 	margin: 0px; */
+/* 	top: 0px; */
+/* 	bottom: 0px; */
+/* 	height: 400px; */
+}
+
+.img_colmena img{
+	width: 70%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	left: 0;
+	right: 0;
+}
+
+.content_overflow {
+	top: 0px;
+	width: 100%;
+}
+
+#divWorkspace {
+/* 	height: 100%; */
+	width: 100%;
+}
+
+.full_height_size {
+/* 	height: 100%; */
+}
+
+.header_colmena {
+	background-image: url('../images/header.jpg'); 
+	background-repeat: no-repeat; 
+	background-color: #0F75CA; 
+	height: 65px; 
+	width: 100%;
+	display: table;
+}
+
+.header_titulo {
+	font-family:"Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;
+	font-size:24px;	
+	font-weight: bold;
+	color: #FFFFFF;
+	width: 100%;
+	height: 38px;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 18px;
+}
+
+.header_subtitulo_left {
+	font-family:"Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;
+	font-size:11px;	
+	font-weight: bold;
+	color: #FFFFFF;
+	display: table-cell; 
+	vertical-align: middle; 
+	text-align: center;
+	float: left; 
+	margin-left: 10px;
+	margin-bottom: 5px
+}
+
+
+.header_subtitulo_right {
+	font-family:"Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;
+	font-size:11px;	
+	font-weight: bold;
+	color: #FFFFFF;
+	display: table-cell; 
+	vertical-align: middle; 
+	text-align: center;
+	float: right; 
+	margin-right: 10px;
+	margin-bottom: 5px
+}
+
+.footer {
+	width:100%;
+	height:20px;
+	left:0;
+	background:#0F75CA;
+}
+
+.texto_titulo_azul {
+	font-family:"Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;
+	font-size:24px;	
+	font-weight: bold;
+	color: #0874B7;
+}
+
+.fondo_azul_colmena {
+	background-color: #0874B7;
+}
+
+/* icons */
+.icon-reload  {background-image:url(../images/icons/reload.png) !important;}
+.icon-accept  {background-image:url(../images/icons/accept.png) !important;}
+.icon-exit    {background-image:url(../images/icons/exit.png) !important;}
+.icon-list    {background-image:url(../images/icons/list.gif) !important;}
+.icon-search  {background-image:url(../images/icons/search.png) !important;}
+.icon-add     {background-image:url(../images/icons/add.png) !important;}
+.icon-clear   {background-image:url(../images/icons/reload.png) !important;}
+.icon-menu    {background-image:url(../images/icons/menu.gif) !important;}
+.icon-save    {background-image:url(../images/icons/save.png) !important;}
+.icon-delete  {background-image:url(../images/icons/delete_icon.gif) !important;}
+.icon-disabled{background-image:url(../images/icons/disabled_icon.gif) !important;}
+

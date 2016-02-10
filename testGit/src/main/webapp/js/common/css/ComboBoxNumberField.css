@@ -1,0 +1,17 @@
+.x-form-cmbnf-wrap {
+    position: relative;
+    height: 22px;
+}
+
+.x-form-cmbnf-wrap .x-form-cmbnf-combo {
+	position: absolute;
+	right: 0;
+	z-index: 1;
+    width: 80%;
+}
+.x-form-cmbnf-wrap .x-form-cmbnf-text {
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    width: 15%;
+}

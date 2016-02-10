@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PersonaiBatis">
+	
+	<select id="getPersona" parameterType="PersonaFiltro" resultType="Persona">
+		select 
+			PER_IDN id, 
+			PER_NOMBRE nombre
+		from 
+			TES_PERSONA
+		where 
+			PER_IDN = #{id}
+	</select>
+
+	<select id="getListPersona" resultType ="Persona">
+		select 
+			PER_IDN id, 
+			PER_NOMBRE nombre
+		from 
+			TES_PERSONA
+	</select>
+
+	<select id="getPersonaCantidad" parameterType="PersonaFiltro" resultType="int">
+		select 
+			count(*)
+		from 
+			TES_PERSONA
+		where 
+			PER_IDN = #{id}
+	</select>
+
+<!-- 	<procedure id="getPersonas" resultMap ="Persona"> -->
+<!-- 		{call prsObtenerPersonas} -->
+<!-- 	</procedure> -->
+
+	
+</mapper>

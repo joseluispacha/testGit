@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+		<property name="configLocation"      value="classpath:cl/colmena/common/conf/mybatis-config.xml"/>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:/cl/colmena/**/dao/ibatis/mapper/*.xml</value>
+				<value>classpath:/cl/colmena/security/dao/ibatis/mapper/UsuarioiBatis.xml</value>
+				<value>classpath:/cl/colmena/security/dao/ibatis/mapper/OpcioniBatis.xml</value>
+			</list>
+		</property>
+		<property name="typeHandlersPackage" value="cl.colmena.common.dao.ibatis.typeHandlers"/>
+		<property name="typeAliasesPackage"  value="cl.colmena.common.model,cl.colmena.testGit.model,cl.colmena.common.dao.ibatis.typeHandlers"/>
+		<property name="dataSource"          ref="JDBCDataSource"/>
+	</bean>
+
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+
+	<bean id="commonDao" class="cl.colmena.common.dao.ibatis.CommonDaoIbatis">
+		<property name="sqlSessionTemplate">
+			<ref bean="sqlSessionTemplate" />
+		</property>
+	</bean>
+
+	<bean id="commonService" class="cl.colmena.common.service.CommonService">
+		<property name="commonDao">
+			<ref bean="commonDao" />
+		</property>
+	</bean>
+
+	<!-- SEGURIDAD - DAO -->
+	<bean id="usuarioDao" class="cl.colmena.security.dao.ibatis.UsuarioiBatisDAO">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</bean>
+
+	<bean id="opcionDao" class="cl.colmena.security.dao.ibatis.OpcioniBatisDAO">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</bean>
+
+	<bean id="encrypt" class="cl.colmena.security.common.Encrypt">
+		<property name="fileName" value="key.bin" />
+	</bean>
+	
+<!-- 	SEGURIDAD - Service -->
+	<bean id="colmenaSecurityService" class="cl.colmena.security.service.ColmenaSecurityService">
+		<property name="opcionDao"  ref="opcionDao"/>
+		<property name="usuarioDao" ref="usuarioDao"/>
+		<property name="encrypt"    ref="encrypt"/>
+	</bean>
+
+	<bean id="CommonAjax" class="cl.colmena.common.web.ajax.CommonAjax">
+		<property name="commonService"				ref="commonService" />
+	</bean>
+
+	<bean id="SeguridadAjax" class="cl.colmena.common.web.ajax.SeguridadAjax">
+		<property name="colmenaSecurityService"		ref="colmenaSecurityService" />
+	</bean>
+
+</beans>

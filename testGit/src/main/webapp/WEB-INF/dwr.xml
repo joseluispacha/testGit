@@ -1,0 +1,25 @@
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
+<dwr>
+	<allow>
+		<filter class="cl.colmena.common.web.filter.DwrSessionFilter" />
+
+		<create creator="new" javascript="CommonAjax"    scope="script">
+			<param name="class" value="cl.colmena.common.web.ajax.CommonAjax" />
+		</create>
+
+		<create creator="new" javascript="SeguridadAjax" scope="script">
+			<param name="class" value="cl.colmena.common.web.ajax.SeguridadAjax" />
+		</create>
+
+
+		<convert converter="bean"  match="cl.colmena.security.model.Result"/>
+		<convert converter="beans" match="cl/colmena/common/wrapper"/>
+		<convert converter="beans" match="cl/colmena/testGit/model"/>
+		
+		<convert converter="bean" javascript="Object" match="java.lang.Object"/>
+		
+		<convert match="java.lang.Exception" converter="exception">
+			<param name='include' value='message, lineNumber' />
+		</convert>
+	</allow>
+</dwr>  
